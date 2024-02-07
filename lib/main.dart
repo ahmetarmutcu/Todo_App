@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:todo_app/constants/color.dart';
+import 'package:todo_app/todoitem.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,9 +14,12 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
-  bool isChecked = false;
+List<String> todo = ["Study lessons", "Run task", "Maptriks hatası"];
+List<String> completed=["Game meetup","Take out trash"];
 
+class _MyAppState extends State<MyApp> {
+
+ bool isChecked = false;
   @override
   Widget build(BuildContext context) {
     double deviceHeight = MediaQuery.of(context).size.height;
@@ -69,139 +73,13 @@ class _MyAppState extends State<MyApp> {
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                   child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Card(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                const Icon(Icons.notes_outlined, size: 50),
-                                const Text(
-                                  "Study Lessons",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 21),
-                                ),
-                                Checkbox(
-                                    value: isChecked,
-                                    onChanged: (val) => {
-                                          setState(() {
-                                            isChecked = val!;
-                                          })
-                                        })
-                              ],
-                            ),
-                          ),
-                        ),
-                        Card(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                const Icon(Icons.notes_outlined, size: 50),
-                                const Text(
-                                  "Study Lessons",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 21),
-                                ),
-                                Checkbox(
-                                    value: isChecked,
-                                    onChanged: (val) => {
-                                          setState(() {
-                                            isChecked = val!;
-                                          })
-                                        })
-                              ],
-                            ),
-                          ),
-                        ),
-                        Card(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                const Icon(Icons.notes_outlined, size: 50),
-                                const Text(
-                                  "Study Lessons",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 21),
-                                ),
-                                Checkbox(
-                                    value: isChecked,
-                                    onChanged: (val) => {
-                                          setState(() {
-                                            isChecked = val!;
-                                          })
-                                        })
-                              ],
-                            ),
-                          ),
-                        ),
-                        Card(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                const Icon(Icons.notes_outlined, size: 50),
-                                const Text(
-                                  "Study Lessons",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 21),
-                                ),
-                                Checkbox(
-                                    value: isChecked,
-                                    onChanged: (val) => {
-                                          setState(() {
-                                            isChecked = val!;
-                                          })
-                                        })
-                              ],
-                            ),
-                          ),
-                        ),
-                        Card(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                const Icon(Icons.notes_outlined, size: 50),
-                                const Text(
-                                  "Study Lessons",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 21),
-                                ),
-                                Checkbox(
-                                    value: isChecked,
-                                    onChanged: (val) => {
-                                          setState(() {
-                                            isChecked = val!;
-                                          })
-                                        })
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
+                    child: ListView.builder(
+                      primary: false,
+                      shrinkWrap: true,
+                      itemCount: todo.length,
+                      itemBuilder: (context, index) {
+                        return TodoItem(title:todo[index]);
+                      },
                     ),
                   ),
                 ),
@@ -222,144 +100,20 @@ class _MyAppState extends State<MyApp> {
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                   child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Card(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                const Icon(Icons.notes_outlined, size: 50),
-                                const Text(
-                                  "Study Lessons",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 21),
-                                ),
-                                Checkbox(
-                                    value: isChecked,
-                                    onChanged: (val) => {
-                                          setState(() {
-                                            isChecked = val!;
-                                          })
-                                        })
-                              ],
-                            ),
-                          ),
-                        ),
-                        Card(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                const Icon(Icons.notes_outlined, size: 50),
-                                const Text(
-                                  "Study Lessons",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 21),
-                                ),
-                                Checkbox(
-                                    value: isChecked,
-                                    onChanged: (val) => {
-                                          setState(() {
-                                            isChecked = val!;
-                                          })
-                                        })
-                              ],
-                            ),
-                          ),
-                        ),
-                        Card(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                const Icon(Icons.notes_outlined, size: 50),
-                                const Text(
-                                  "Study Lessons",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 21),
-                                ),
-                                Checkbox(
-                                    value: isChecked,
-                                    onChanged: (val) => {
-                                          setState(() {
-                                            isChecked = val!;
-                                          })
-                                        })
-                              ],
-                            ),
-                          ),
-                        ),
-                        Card(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                const Icon(Icons.notes_outlined, size: 50),
-                                const Text(
-                                  "Study Lessons",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 21),
-                                ),
-                                Checkbox(
-                                    value: isChecked,
-                                    onChanged: (val) => {
-                                          setState(() {
-                                            isChecked = val!;
-                                          })
-                                        })
-                              ],
-                            ),
-                          ),
-                        ),
-                        Card(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                const Icon(Icons.notes_outlined, size: 50),
-                                const Text(
-                                  "Study Lessons",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 21),
-                                ),
-                                Checkbox(
-                                    value: isChecked,
-                                    onChanged: (val) => {
-                                          setState(() {
-                                            isChecked = val!;
-                                          })
-                                        })
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
+                    child: ListView.builder(
+                      primary: false,
+                      shrinkWrap: true,
+                      itemCount: completed.length,
+                      itemBuilder: (context, index) {
+                        return TodoItem(title:completed[index]);
+                      },
+                    ),
                     ),
                   ),
                 ),
-              ),
-              ElevatedButton(onPressed: (){}, child: const Text("Add New Task"))
+              
+              ElevatedButton(
+                  onPressed: () {}, child: const Text("Add New Task"))
             ],
           ),
         ),
