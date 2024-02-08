@@ -13,40 +13,42 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-// List<String> todo = ["Study lessons", "Run task", "Maptriks hatası"];
-// List<String> completed = ["Game meetup", "Take out trash"];
-
-List<Task> todo = [
-  Task(
-      type: TaskType.note,
-      title: "Study lessons",
-      description: "Study Complited",
-      isCompleted: false),
-  Task(
-      type: TaskType.calendar,
-      title: "Go to party",
-      description: "Atternt to part",
-      isCompleted: false),
-  Task(
-      type: TaskType.contest,
-      title: "Run 5K",
-      description: "Run 5 kilometers",
-      isCompleted: false),
-];
-List<Task> completed = [
-  Task(
-      type: TaskType.calendar,
-      title: "Go to party",
-      description: "Atternt to part",
-      isCompleted: false),
-  Task(
-      type: TaskType.contest,
-      title: "Run 5K",
-      description: "Run 5 kilometers",
-      isCompleted: false),
-];
-
 class _HomeScreenState extends State<HomeScreen> {
+  List<Task> todo = [
+    Task(
+        type: TaskType.note,
+        title: "Study lessons",
+        description: "Study Complited",
+        isCompleted: false),
+    Task(
+        type: TaskType.calendar,
+        title: "Go to party",
+        description: "Atternt to part",
+        isCompleted: false),
+    Task(
+        type: TaskType.contest,
+        title: "Run 5K",
+        description: "Run 5 kilometers",
+        isCompleted: false),
+  ];
+  List<Task> completed = [
+    Task(
+        type: TaskType.calendar,
+        title: "Go to party",
+        description: "Atternt to part",
+        isCompleted: false),
+    Task(
+        type: TaskType.contest,
+        title: "Run 5K",
+        description: "Run 5 kilometers",
+        isCompleted: false),
+  ];
+  void addNewTask(Task newTask) {
+    setState(() {
+      todo.add(newTask);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double deviceHeight = MediaQuery.of(context).size.height;
@@ -141,7 +143,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const AddNewTaskScreen(),
+                    builder: (context) => AddNewTaskScreen(
+                      addNewTask: (newTask) => addNewTask(newTask),
+                    ),
                   ));
                 },
                 child: const Text("Add New Task"),
