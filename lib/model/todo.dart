@@ -27,4 +27,10 @@ class Todo {
     data["userId"]=userId;
     return data;
   }
+
+  @override
+  String toString() {
+    return 'Todo{id: $id, todo: $todo, completed: $completed, userId: $userId}';
+  }
+
 }
