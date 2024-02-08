@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:todo_app/constants/color.dart';
+import 'package:todo_app/constants/tasktype.dart';
+import 'package:todo_app/model/task.dart';
 import 'package:todo_app/screens/add_new_task.dart';
 import 'package:todo_app/todoitem.dart';
 
@@ -11,8 +13,38 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-List<String> todo = ["Study lessons", "Run task", "Maptriks hatası"];
-List<String> completed = ["Game meetup", "Take out trash"];
+// List<String> todo = ["Study lessons", "Run task", "Maptriks hatası"];
+// List<String> completed = ["Game meetup", "Take out trash"];
+
+List<Task> todo = [
+  Task(
+      type: TaskType.note,
+      title: "Study lessons",
+      description: "Study Complited",
+      isCompleted: false),
+  Task(
+      type: TaskType.calendar,
+      title: "Go to party",
+      description: "Atternt to part",
+      isCompleted: false),
+  Task(
+      type: TaskType.contest,
+      title: "Run 5K",
+      description: "Run 5 kilometers",
+      isCompleted: false),
+];
+List<Task> completed = [
+  Task(
+      type: TaskType.calendar,
+      title: "Go to party",
+      description: "Atternt to part",
+      isCompleted: false),
+  Task(
+      type: TaskType.contest,
+      title: "Run 5K",
+      description: "Run 5 kilometers",
+      isCompleted: false),
+];
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
@@ -72,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       shrinkWrap: true,
                       itemCount: todo.length,
                       itemBuilder: (context, index) {
-                        return TodoItem(title: todo[index]);
+                        return TodoItem(task: todo[index]);
                       },
                     ),
                   ),
@@ -99,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       shrinkWrap: true,
                       itemCount: completed.length,
                       itemBuilder: (context, index) {
-                        return TodoItem(title: completed[index]);
+                        return TodoItem(task: completed[index]);
                       },
                     ),
                   ),
@@ -108,10 +140,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder:(context) =>const AddNewTaskScreen(),
-                    )
-                  );
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const AddNewTaskScreen(),
+                  ));
                 },
                 child: const Text("Add New Task"),
               )
